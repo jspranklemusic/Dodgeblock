@@ -1,0 +1,176 @@
+body {
+    background: navy;
+}
+.button-area {
+    display:none;
+}
+@media only screen and (max-width: 1000px) {
+    body {
+      background-color:black
+    }
+    .button-area {
+        display:flex;
+        background-color: navy;
+        height:300px;
+        justify-content: space-around;
+        border: 2px dotted black;
+    } 
+    .button1 {
+        margin-top: 150px;
+        position: relative;
+        color:white;
+        font-size: 40px;
+
+    }
+    .button2 {
+        margin-top: 150px;
+        color:white;
+        position: relative;
+        font-size: 40px;
+
+    }
+    .button3 {
+        margin-top: 150px;
+        color:white;
+        position: relative;
+        font-size: 40px;
+
+    }
+  }
+
+
+
+.game-window {
+    width:900px;
+    height:600px;
+    background: white;
+    border: 3px solid black;
+}
+.play-area{
+    overflow: hidden;
+    position: relative;
+    width:900px;
+    height:520px;
+    border-top:3px solid black;
+    border-bottom:3px solid black;
+    background: lightgray;
+    top:25px;
+}
+.score-counter {
+    text-align: center;
+    font-size: 2em;
+    color:forestgreen;
+    border: 2px dotted black;
+}
+.player {
+    position: absolute;
+    background: red;
+    height: 80px;
+    width: 80px;
+    border: 2px dotted black;
+    left:10px;
+    top:0px;
+    border-radius: 3%;
+    
+}
+.enemy-object1{
+    position: relative;
+    background:black;
+    height: 100px;
+    width: 200px;
+    border: 2px dotted black;
+    left:900px;
+    top:0px;
+   
+   
+   
+}
+
+.enemy-object2{
+    position: relative;
+    background:black;
+    height: 100px;
+    width: 200px;
+    border: 2px dotted black;
+    left:900px;
+    top:0px;
+    
+   
+}
+
+
+.enemy-object3{
+    position: relative;
+    background:black;
+    height: 100px;
+    width: 200px;
+    border: 2px dotted black;
+    left:900px;
+    top:0px;
+   
+   
+}
+
+
+.enemy-object4{
+    position: relative;
+    background:black;
+    height: 100px;
+    width: 200px;
+    border: 2px dotted black;
+    left:900px;
+    top:0px;
+    
+   
+}
+
+
+.enemy-object5{
+    position: relative;
+    background:black;
+    height: 100px;
+    width: 200px;
+    border: 2px dotted black;
+    left:900px;
+    top:0px;
+   
+   
+}
+.enemy-object1-tall4blx {
+    position: relative;
+    background:black;
+    height: 500px;
+    width: 100px;
+    border: 2px dotted black;
+    left:900px;
+    top:-416px;
+    
+}
+
+.enemy-object2-tall4blx {
+    position: relative;
+    background:black;
+    height: 500px;
+    width: 100px;
+    border: 2px dotted black;
+    left:900px;
+    top:-1100px;
+}
+.enemy-object1-tall2blx {
+    position: relative;
+    background:black;
+    height: 500px;
+    width: 100px;
+    border: 2px dotted black;
+    left:900px;
+    top:-1200px;
+}
+.enemy-object2-tall2blx {
+    position: relative;
+    background:black;
+    height: 205px;
+    width: 100px;
+    border: 2px dotted black;
+    left:900px;
+    top:-2033px;
+}

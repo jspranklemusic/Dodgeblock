@@ -1,0 +1,503 @@
+//PLAYER VARIABLES//
+var y = 0
+var yBottom = 80
+var keyInput
+var player = document.querySelector(".player")
+player.style.top="0px"
+var death = 0
+var music = new Audio('videogamemusic.mp3')
+music.loop= true
+var effect = new Audio('reset-sfx.mp3')
+var crashSFX = new Audio('crash-sfx.mp3')
+music.play()
+
+//ENEMY POSITION VARIABLES & PROGRAM LOCATION VARIABLES
+var EnemyObject1 = document.querySelector(".enemy-object1")
+var EnemyObject2 = document.querySelector(".enemy-object2")
+var EnemyObject3 = document.querySelector(".enemy-object3")
+var EnemyObject4 = document.querySelector(".enemy-object4")
+var EnemyObject5 = document.querySelector(".enemy-object5")
+var enemyObject1Tall4Blx = document.querySelector(".enemy-object1-tall4blx")
+var enemyObject2Tall4Blx = document.querySelector(".enemy-object2-tall4blx")
+var enemyObject1Tall2Blx = document.querySelector(".enemy-object1-tall2blx")
+var enemyObject2Tall2Blx = document.querySelector(".enemy-object2-tall2blx")
+
+//ENEMY LEFT POSITON VARIABLES
+var x1 = 900
+var x2 = 900
+var x3 = 900
+var x4 = 900
+var x5 = 900
+var x6 = 900
+var x7 = 900
+var x8 = 900
+var x9 = 900
+
+/*BLOCK, SPEED, ATTACK PROPERTIES//
+Total of Eighteen Different Speeds: (but up to number 17 on array:0-17)     
+*/
+
+var speed = [1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,11,12,13]
+var sp1 = 0
+var sp2 = 0
+var sp3 = 0
+var sp4 = 0
+var sp5 = 0
+var sp6 = 0
+var sp7 = 0
+var sp8 = 0
+var sp9 = 0
+
+var start = [900,1100,1300,1500,1800]
+var st1 = 0
+var st2 = 0
+var st3 = 0
+var st4 = 0
+var st5 = 0
+var st6 = 0
+var st7 = 0
+var st8 = 0
+var st9 = 0
+
+////////////
+var speedFaster1 
+var speedFaster2 
+var num1 = 0
+var num2 = 0
+var num3 = 0
+var secs = 2000
+var selectSpecialObject = 0 
+var selectObject = 0
+var addTwo = 0 
+
+//SCORE//
+var score = 0
+document.querySelector(".score-counter").innerHTML = "Score: " + score
+
+
+
+/*MOVE ENEMY 1 FUNCTION
+Let's do some math here. 900px wide + 200px block. Start:900 End: -200. 
+here's how fast I want them to go (1100 px):
+
+slow: 4s (1100/4) = 275 px/sec -->
+medium:3s (1100/3) = 366.67 px/sec
+fast: 2s (1100/2) = 550 px/sec
+
+If interval is 10, then it is 2.75px, 3.67px, and 5.5 px per interval.
+*/
+
+//MOVE FUNCTION VARIABLES//
+var enemyObject1Move
+var enemyObject2Move
+var enemyObject3Move
+var enemyObject4Move
+var enemyObject5Move
+var enemyObject1Tall4BlxMove
+var enemyObject2Tall4BlxMove
+var enemyObject1Tall2BlxMove
+var enemyObject2Tall2BlxMove
+//MOVE FUNCTIONS//
+
+function enemyObject1MoveFunction(){
+    
+    if (x1>=start[st1] ){
+        
+    enemyObject1Move = setInterval(function(){
+    x1-=speed[sp1]
+     EnemyObject1.style.left= x1+"px"
+     var playerTop = parseInt(player.style.top)
+     if (x1 <80 && x1 > -200 && playerTop <100)
+     {deathFunction()}
+},10)}
+setInterval(function(){if (x1<-210|| death==1) {
+    x1 = start[st1] 
+    EnemyObject1.style.left= x1+"px"
+    clearInterval(enemyObject1Move)
+    }
+},1)
+}
+function enemyObject2MoveFunction(){
+if (x2>=start[st2] ){
+    enemyObject2Move = setInterval(function(){
+   
+    x2-=speed[sp2]
+     EnemyObject2.style.left= x2+"px"
+     var playerTop = parseInt(player.style.top)
+     if (x2 <80 && x2 > -200 && playerTop >20 && playerTop <200)
+     {deathFunction()}
+     if (x1<-200) {clearInterval(EnemyObject1Move)}
+},10)}
+
+setInterval(function(){if (x2<-210|| death==1) {
+    x2 = start[st2] 
+    EnemyObject2.style.left= x2+"px"
+    clearInterval(enemyObject2Move)
+    }},1)
+}
+function enemyObject3MoveFunction(){
+    if (x3>=start[st3] ){
+        enemyObject3Move = setInterval(function(){
+       
+        x3-=speed[sp3]
+         EnemyObject3.style.left= x3+"px"
+         var playerTop = parseInt(player.style.top)
+         if (x3 <80 && x3 > -200 && playerTop >122 && playerTop <303)
+         {deathFunction()}
+         if (x3<-200) {clearInterval(EnemyObject3Move)}
+    },10)}
+    
+    setInterval(function(){if (x3<-210|| death==1) {
+        x3 = start[st3] 
+        EnemyObject3.style.left= x3+"px"
+        clearInterval(enemyObject3Move)
+        }},1)
+}
+function enemyObject4MoveFunction(){
+    if (x4>=start[st4] ){
+         enemyObject4Move = setInterval(function(){
+       
+        x4-=speed[sp4]
+         EnemyObject4.style.left= x4+"px"
+         var playerTop = parseInt(player.style.top)
+         if (x4 <80 && x4 > -200 && playerTop >226 && playerTop <415)
+         {deathFunction()}
+         if (x4<-200) {clearInterval(EnemyObject4Move)}
+    },10)}
+    
+    setInterval(function(){if (x4<-210|| death==1) {
+        x4 = start[st4] 
+        EnemyObject4.style.left= x4+"px"
+        clearInterval(enemyObject4Move)
+        }},1)
+}
+function enemyObject5MoveFunction(){
+    if (x5>=start[st5] ){
+         enemyObject5Move = setInterval(function(){
+        x5-=speed[sp5]
+         EnemyObject5.style.left= x5+"px"
+         var playerTop = parseInt(player.style.top)
+         if (x5 <80 && x5 > -200 && playerTop >330)
+         {deathFunction()}
+    },10)}
+    
+    setInterval(function(){if (x5<-210|| death==1) {
+        x5 = start[st5] 
+        EnemyObject5.style.left= x5+"px"
+        clearInterval(enemyObject5Move)
+        }},1)
+}
+function enemyObject1Tall4BlxFunction(){
+    if (x6>=start[st6] ){
+     enemyObject1Tall4BlxMove = setInterval(function(){
+    x6-=speed[sp6]
+     enemyObject1Tall4Blx.style.left= x6+"px"
+     var playerTop = parseInt(player.style.top)
+     if (x6 <80 && x6 > -100 && playerTop >100)
+     {deathFunction()}
+},10)}
+setInterval(function(){if (x6<-210|| death==1) {
+    x6 = start[st6] 
+    enemyObject1Tall4Blx.style.left= x6+"px"
+    clearInterval(enemyObject1Tall4BlxMove)
+    }},1)
+}
+function enemyObject2Tall4BlxFunction(){
+    if (x7>=start[st7] ){
+     enemyObject2Tall4BlxMove = setInterval(function(){
+    x7-=speed[sp7]
+     enemyObject2Tall4Blx.style.left= x7+"px"
+     var playerTop = parseInt(player.style.top)
+     if (x7 <80 && x7 > -100 && playerTop <425)
+     {deathFunction()}
+},10)}
+setInterval(function(){if (x7<-210 || death==1) {
+    x7 = start[st7] 
+    enemyObject2Tall4Blx.style.left= x7+"px"
+    clearInterval(enemyObject2Tall4BlxMove)
+    }},1)
+}
+function enemyObject1Tall2BlxFunction(){
+    if (x8>=start[st8] ){
+     enemyObject1Tall2BlxMove = setInterval(function(){
+    x8-=speed[sp8]
+     enemyObject1Tall2Blx.style.left= x8+"px"
+     var playerTop = parseInt(player.style.top)
+     if (x8 <80 && x8 > -100 && playerTop >250)
+     {deathFunction()}
+},10)}
+setInterval(function(){if (x8<-210|| death==1) {
+    x8 = start[st8] 
+    enemyObject1Tall2Blx.style.left= x8+"px"
+    clearInterval(enemyObject1Tall2BlxMove)
+    }},1)
+}
+function enemyObject2Tall2BlxFunction(){
+    if (x9>=start[st9] ){
+     enemyObject2Tall2BlxMove = setInterval(function(){
+    x9-=speed[sp9]
+     enemyObject2Tall2Blx.style.left= x9+"px"
+     var playerTop = parseInt(player.style.top)
+     if (x9 <80 && x9 > -100 && playerTop <200)
+     {deathFunction()}
+},10)}
+setInterval(function(){if (x9<-210|| death==1) {
+    x9 = start[st9] 
+    enemyObject2Tall2Blx.style.left= x9+"px"
+    clearInterval(enemyObject2Tall2BlxMove)
+    }},1)
+}
+
+//////FUNCTION ARRAY/////////////////
+
+var objectMoves = [
+    enemyObject1MoveFunction, //0
+    enemyObject2MoveFunction, //1
+    enemyObject3MoveFunction, //2
+    enemyObject4MoveFunction, //3
+    enemyObject5MoveFunction, //4
+    enemyObject1Tall4BlxFunction, //5
+    enemyObject2Tall4BlxFunction, //6
+    enemyObject1Tall2BlxFunction, //7
+    enemyObject2Tall2BlxFunction, //8
+]
+
+
+//COMBINATIONS//
+
+function sendTwoPillars() {
+    objectMoves[6]()
+    x6+=700
+    objectMoves[5]()
+  
+   
+}
+function sendblock13() {
+    objectMoves[0]()
+    objectMoves[2]()
+   
+  
+ 
+}
+function sendblock24() {
+    
+    objectMoves[1]()
+    objectMoves[3]()
+ 
+}
+function sendWallHole(){
+    objectMoves[7]()
+    objectMoves[8]()
+
+}
+function sendBlockHole(){
+    objectMoves[0]()
+    objectMoves[1]()
+    objectMoves[3]()
+    objectMoves[4]()
+  
+
+   
+}
+function sendAll(){
+    objectMoves[6]()
+    x6+=700
+    objectMoves[5]()
+    x1+=1400
+    x3+=1400
+    x5+=1400
+    objectMoves[0]()
+    objectMoves[2]()
+    objectMoves[4]()
+    x2+=2000
+    x4+=2000
+    objectMoves[1]()
+    objectMoves[3]()
+    x8+=2600
+    x9+=2600
+    objectMoves[7]()
+    objectMoves[8]()
+}
+
+//DEATH FUNCTION
+
+function deathFunction() {
+    music.pause()
+    crashSFX.play()
+    death=1
+    alert("You died!")
+    effect.play()
+    music.currentTime = 0
+    music.play();
+     x1 = 900
+     x2 = 900
+     x3 = 900
+     x4 = 900
+     x5 = 900
+     x6 = 900
+     x7 = 900
+     x8 = 900
+     x9 = 900
+     sp1 = 1
+     sp2 = 1
+     sp3 = 1
+     sp4 = 1
+     sp5 = 1
+     sp6 = 0
+     sp7 = 0
+     sp8 = 0
+     sp9 = 0
+     score = 0
+     document.querySelector(".score-counter").innerHTML = "Score: " + score
+     y = 0
+     player.style.top="0px"
+     keyInput = 0
+     secs = 2000
+     clearInterval(speedFaster1)
+     clearInterval(speedFaster2)
+     clearInterval(selectSpecialObject)
+     clearInterval(addTwo)
+     clearInterval(selectObject)
+     levelOne()
+     
+}
+
+//SCORE COUNTER//
+
+
+var scoreCount = setInterval(function(){
+    score++
+    document.querySelector(".score-counter").innerHTML = "Score: " + score
+},50)
+
+function moveStop(){
+    keyInput = 0
+
+}
+
+function pauseMobile(){
+        music.pause()
+        effect.play()
+        alert("Paused. Press 'Ok' to resume.")
+        keyInput = 0
+        effect.play()
+        music.play()
+}
+
+document.addEventListener('keydown', function(event) {
+    keyInput = event.keyCode
+    if (keyInput == 32){
+        music.pause()
+        effect.play()
+        alert("Paused. Press 'Ok' to resume.")
+        keyInput = 0
+        effect.play()
+        music.play()
+    }
+})
+document.addEventListener('keyup', function(event) {
+    if (event.which == 38 || event.which == 40) {
+    keyInput = 0}
+})
+function moveGame() {
+    function moveDown() {
+    if (y<435) {
+    y+=3
+    yBottom+=3
+    player.style.top = y + "px"
+    player.style.bottom = yBottom + "px"
+}
+}
+    function moveUp() {
+    if (y>0) {
+    y-=3
+    yBottom-=3
+    player.style.top = y + "px"
+    player.style.bottom = yBottom + "px"}
+}
+if (keyInput == 38) {moveUp()}
+if (keyInput == 40) {moveDown()}
+setTimeout(moveGame, 9);
+}
+moveGame()
+
+//ALGORITHMS//
+function levelOne(){
+
+setTimeout(function(){death=0
+    var num = Math.floor(Math.random()*5)
+    objectMoves[num]()},1000)
+
+    sp1 = 1
+    sp2 = 1
+    sp3 = 1
+    sp4 = 1
+    sp5 = 1
+    sp6 = 0
+    sp7 = 0
+    sp8 = 0
+    sp9 = 0      
+
+    speedFaster1 = setInterval(function(){
+            if (sp1<20) {sp1++}
+            if (sp2<20) {sp2++}
+            if (sp3<20) {sp3++}
+            if (sp4<20) {sp4++}
+            if (sp5<20) {sp5++}
+            },10000)
+           
+    speedFaster2 = setInterval(function(){
+                if (sp6<5) {sp6++}
+                if (sp7<5) {sp7++}
+                if (sp8<5) {sp8++}
+                if (sp9<5) {sp9++}
+                },20000)
+    
+    //ADDS a LONG block
+    function selectSpecialObjectFunction(){
+        selectSpecialObject = setInterval(function(){
+        num2 = (Math.floor(Math.random()*11) + 5)
+        objectMoves[num2]() 
+        },5000)
+    }   
+
+
+    //ADDS a NORMAL block
+    function selectObjectFunction() {
+        selectObject = setInterval(function(){
+        num1 = Math.floor(Math.random()*5)
+        if (num2 == 5 && num1 == 0){num1++}
+        if (num2 == 6 && num1 == 4){num1--}
+        objectMoves[num1]()
+        },secs)
+        
+        setTimeout(function(){
+            clearInterval(selectObject)
+            if (secs>750) {secs-=30}
+            selectObjectFunction()
+        },5000)
+    }
+   
+    
+    
+    //ADDS two at the same time
+    function addTwoFunction(){
+    setTimeout(function(){
+           addTwo = setInterval(function(){
+            num3 = Math.floor(Math.random()*5)
+            if (num2 == 5 && num3 == 0){num3++}
+            if (num2 == 6 && num3 == 4){num3--}
+            objectMoves[num3]()
+        
+            },1500)
+        
+    },60000)}
+
+    addTwoFunction()
+    selectObjectFunction()
+    selectSpecialObjectFunction()
+
+   
+}
+
+levelOne()
